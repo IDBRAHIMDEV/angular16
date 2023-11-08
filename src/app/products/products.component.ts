@@ -8,34 +8,83 @@ import { Product } from '../models/product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
+
+  edit: boolean = false
+
+  showForm: boolean = false
   
-  myProduct = {
+  myProduct: Product = {
     id: 0,
-    title: ''
+    title: '',
+    image: '',
+    description: '',
+    price: 0
   }
 
-  products = [
+  products: Product[] = [
     {
       id: 1,
-      title: "Iphone 15"
+      title: "Iphone 15",
+      description: '',
+      image: 'https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/VXYNEvjqRvaVy7cvy0he',
+      price: 237
     },
     {
       id: 2,
-      title: "Samsung 19 note"
+      title: "Samsung 19 note",
+      description: 'lorem ipsum calc',
+      image: 'https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ndgpEj1YRAqrlS0gNZBb',
+      price: 987
     },
     {
       id: 2,
-      title: "Vivo phone"
+      title: "Vivo phone",
+      description: 'lorem ipsum calc',
+      image: 'https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/qq7I5yr4QvqfVAMKQG1K',
+      price: 123
     }
   ]
+
+  toggleForm() {
+    this.showForm = !this.showForm
+  }
 
   addProduct() {
     this.products = [...this.products, this.myProduct]
 
     this.myProduct = {
       id: 0,
-      title: ''
+      title: '',
+      image: '',
+      description: '',
+      price: 0
     }
+
+    this.showForm = false
+  }
+
+  textButtonShowForm() {
+    return this.showForm ? 'Hide' : 'Show'
+  }
+
+  editProduct(product: Product) {
+    this.edit = true
+    this.myProduct = product
+  }
+
+  updateProduct() {
+
+    this.edit = false
+    this.myProduct = {
+      id: 0,
+      title: '',
+      image: '',
+      description: '',
+      price: 0
+    }
+
+    this.showForm = false
+
   }
 
   deleteProduct(product: Product) {
