@@ -1,0 +1,34 @@
+ <!-- //Interpellation
+<h1>{{ title }}</h1>
+<p>{{ getTitle() }}</p>
+
+Property Binding
+<img [src]="picture" >
+
+//Event binding
+<button class="btn btn-sm btn-danger" (click)="setTitle()">Change the title</button>
+
+Data binding
+<input type="text" [(ngModel)]="title">
+<input type="url" [(ngModel)]="picture"> -->
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 mx-auto">
+           
+            <input (keyup.enter)="addProduct()" [(ngModel)]="myProduct.title" type="text" placeholder="Add a title of a Product" class="form-control my-2">
+            <div class="d-grid my-2">
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let product of products">
+                    {{ product.title }}
+                 <div class="text-end">
+                    <button class="btn btn-sm btn-warning me-2">Edit</button>
+                    <button (click)="deleteProduct(product)" class="btn btn-sm btn-danger">Delete</button>
+                </div>  
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
