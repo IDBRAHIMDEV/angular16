@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'app-products',
@@ -37,7 +38,7 @@ export class ProductsComponent {
     }
   }
 
-  deleteProduct(product: any) {
+  deleteProduct(product: Product) {
 
     Swal.fire({
       title: "Are you sure?",
@@ -58,8 +59,10 @@ export class ProductsComponent {
 
         Swal.fire({
           title: "Product Deleted!",
-          text: "Product "+product.title+" is deleted",
-          icon: "success"
+          text: `Product ${product.title} is deleted`,
+          icon: "success",
+          timer: 3000,
+          timerProgressBar: true
         });
       }
     });

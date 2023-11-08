@@ -16,10 +16,10 @@ Data binding
     <div class="row mt-5">
         <div class="col-md-6 mx-auto">
            
-            <input (keyup.enter)="addProduct()" [(ngModel)]="myProduct.title" type="text" placeholder="Add a title of a Product" class="form-control my-2">
+            <!-- <input (keyup.enter)="addProduct()" [(ngModel)]="myProduct.title" type="text" placeholder="Add a title of a Product" class="form-control my-2"> -->
             <div class="d-grid my-2">
             </div>
-            <ul class="list-group">
+            <ul class="list-group" *ngIf="products.length">
                 <li class="list-group-item" *ngFor="let product of products">
                     {{ product.title }}
                  <div class="text-end">
@@ -28,6 +28,19 @@ Data binding
                 </div>  
                 </li>
             </ul>
+
+            <ng-container *ngIf="products.length > 0; then withProducts else withoutPoroducts"></ng-container>
+
+            <ng-template #withProducts>
+                <div class="alert alert-info my-3">
+                    you have {{ products.length }}
+                </div>
+            </ng-template> 
+            
+            <ng-template #withoutPoroducts>
+                <div class="alert alert-warning my-3">Not product yet !</div>
+            </ng-template>
+
         </div>
     </div>
 </div>
