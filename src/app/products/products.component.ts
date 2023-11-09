@@ -9,6 +9,7 @@ import { Product } from '../models/product';
 })
 export class ProductsComponent {
 
+  list: boolean = true
   edit: boolean = false
 
   showForm: boolean = false
@@ -44,6 +45,10 @@ export class ProductsComponent {
       price: 123
     }
   ]
+
+  toggleList(toggle: boolean) {
+    this.list = toggle
+  }
 
   toggleForm() {
     this.showForm = !this.showForm

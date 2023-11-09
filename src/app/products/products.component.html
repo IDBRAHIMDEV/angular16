@@ -16,8 +16,14 @@ Data binding
     <div class="row mt-5">
         <div class="col-md-6 mx-auto">
             
+
             <div (click)="toggleForm()" class="my-4 text-end">
                 <button class="btn btn-success">{{ textButtonShowForm() }}</button>
+            </div>
+
+            <div class="text-start">
+                <button (click)="toggleList(true)" class="btn btn-light me-2">List</button>
+                <button (click)="toggleList(false)" class="btn btn-light">Grid</button>
             </div>
             
             <div *ngIf="showForm">
@@ -47,17 +53,29 @@ Data binding
 
             <div class="d-grid my-2">
             </div>
-            <ul class="list-group" *ngIf="products.length">
-                <li class="list-group-item" *ngFor="let product of products">
-                    <img width="100px" height="auto" [src]="product.image" [alt]="product.title"> {{ product.title }}
-                    <p class="my-3">{{ product.description }}</p>
-                    <p class="my-3">{{ product.price }}</p>
-                 <div class="text-end">
-                    <button (click)="editProduct(product)" class="btn btn-sm btn-warning me-2">Edit</button>
-                    <button (click)="deleteProduct(product)" class="btn btn-sm btn-danger">Delete</button>
-                </div>  
-                </li>
-            </ul>
+
+            <ng-container *ngIf="list">
+                <ul class="list-group" *ngIf="products.length">
+                    <li class="list-group-item" *ngFor="let product of products">
+                        <img width="100px" height="auto" [src]="product.image" [alt]="product.title"> {{ product.title }}
+                        <p class="my-3">{{ product.description }}</p>
+                        <p class="my-3">{{ product.price }}</p>
+                     <div class="text-end">
+                        <button (click)="editProduct(product)" class="btn btn-sm btn-warning me-2">Edit</button>
+                        <button (click)="deleteProduct(product)" class="btn btn-sm btn-danger">Delete</button>
+                    </div>  
+                    </li>
+                </ul>
+            </ng-container>
+
+
+            <div class="row" *ngIf="!list">
+                <div class="col-md-6" *ngFor="let product of products">
+                    <app-card-product 
+                        [product]="product">
+                    </app-card-product>
+                </div>
+            </div>
 
             <ng-container *ngIf="products.length > 0; then withProducts else withoutPoroducts"></ng-container>
 

@@ -13,6 +13,7 @@ import { ListComponent } from './list/list.component';
 import { CardComponent } from './card/card.component';
 import { ProductsComponent } from './products/products.component'
 import { FormsModule } from '@angular/forms';
+import { CardProductComponent } from './card-product/card-product.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     TableComponent,
     ListComponent,
     CardComponent,
-    ProductsComponent
+    ProductsComponent,
+    CardProductComponent
   ],
   imports: [
     BrowserModule,
