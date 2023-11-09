@@ -72,7 +72,10 @@ Data binding
             <div class="row" *ngIf="!list">
                 <div class="col-md-6" *ngFor="let product of products">
                     <app-card-product 
-                        [product]="product">
+                        [product]="product"
+                        (removeOneProduct)="deleteProduct($event)"
+                        (editOneProduct)="editProduct($event)"
+                    >
                     </app-card-product>
                 </div>
             </div>

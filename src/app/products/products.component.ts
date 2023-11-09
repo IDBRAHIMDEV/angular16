@@ -73,6 +73,7 @@ export class ProductsComponent {
   }
 
   editProduct(product: Product) {
+    this.showForm = true
     this.edit = true
     this.myProduct = product
   }

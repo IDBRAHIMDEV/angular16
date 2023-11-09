@@ -4,5 +4,9 @@
         <h4 class="card-title">{{ product.title }}</h4>
         <p class="card-text">{{ product.description }}</p>
         <p class="">{{ product.price }}</p>
+        <div>
+            <button (click)="wantEditProduct(product)" class="btn btn-sm btn-warning me-2">Edit</button>
+            <button (click)="wantDeleteProduct(product)" class="btn btn-sm btn-danger">Delete</button>
+        </div>
     </div>
 </div>

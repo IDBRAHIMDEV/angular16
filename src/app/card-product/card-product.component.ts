@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../models/product';
 
 @Component({
@@ -8,4 +9,14 @@ import { Product } from '../models/product';
 })
 export class CardProductComponent {
    @Input() product: Product | null = null
+   @Output() removeOneProduct = new EventEmitter()
+   @Output() editOneProduct = new EventEmitter()
+
+   wantDeleteProduct(product: Product) {
+      this.removeOneProduct.emit(product)
+   }
+
+   wantEditProduct(product: Product) {
+    this.editOneProduct.emit(product)
+   }
 }
